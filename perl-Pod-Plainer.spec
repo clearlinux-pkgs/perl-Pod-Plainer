@@ -4,14 +4,14 @@
 #
 Name     : perl-Pod-Plainer
 Version  : 1.04
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpod-plainer-perl/libpod-plainer-perl_1.04-1.debian.tar.xz
 Summary  : 'Perl extension for converting Pod to old-style Pod.'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Pod-Plainer-man
+BuildRequires : buildreq-cpan
 
 %description
 Pod-Plainer version 1.04
@@ -20,19 +20,20 @@ This was a core module in the Perl distribution to aid adoption
 of extended POD featues.  It is no longer needed in the Perl
 distribution and is being migrated to CPAN.
 
-%package man
-Summary: man components for the perl-Pod-Plainer package.
-Group: Default
+%package dev
+Summary: dev components for the perl-Pod-Plainer package.
+Group: Development
+Provides: perl-Pod-Plainer-devel = %{version}-%{release}
 
-%description man
-man components for the perl-Pod-Plainer package.
+%description dev
+dev components for the perl-Pod-Plainer package.
 
 
 %prep
-tar -xf %{SOURCE1}
-cd ..
 %setup -q -n Pod-Plainer-1.04
-mkdir -p %{_topdir}/BUILD/Pod-Plainer-1.04/deblicense/
+cd ..
+%setup -q -T -D -n Pod-Plainer-1.04 -b 1
+mkdir -p deblicense/
 mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Pod-Plainer-1.04/deblicense/
 
 %build
@@ -58,9 +59,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -69,8 +70,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Pod/Plainer.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Pod/Plainer.pm
 
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Pod::Plainer.3
