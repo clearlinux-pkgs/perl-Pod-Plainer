@@ -4,7 +4,7 @@
 #
 Name     : perl-Pod-Plainer
 Version  : 1.04
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpod-plainer-perl/libpod-plainer-perl_1.04-1.debian.tar.xz
@@ -80,7 +80,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Pod-Plainer
-cp %{_builddir}/Pod-Plainer-1.04/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Pod-Plainer/af5d38e2865f764a3552963ff75354104cb4cda8
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Pod-Plainer/af5d38e2865f764a3552963ff75354104cb4cda8
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -104,4 +104,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Pod/Plainer.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Pod/Plainer.pm
