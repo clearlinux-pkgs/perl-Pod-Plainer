@@ -4,7 +4,7 @@
 #
 Name     : perl-Pod-Plainer
 Version  : 1.04
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpod-plainer-perl/libpod-plainer-perl_1.04-1.debian.tar.xz
@@ -13,7 +13,9 @@ Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Pod-Plainer-license = %{version}-%{release}
 Requires: perl-Pod-Plainer-perl = %{version}-%{release}
+Requires: perl(Pod::Parser)
 BuildRequires : buildreq-cpan
+BuildRequires : perl(Pod::Parser)
 
 %description
 Pod-Plainer version 1.04
