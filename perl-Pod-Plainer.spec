@@ -4,7 +4,7 @@
 #
 Name     : perl-Pod-Plainer
 Version  : 1.04
-Release  : 20
+Release  : 21
 URL      : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/Pod-Plainer-1.04.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpod-plainer-perl/libpod-plainer-perl_1.04-1.debian.tar.xz
